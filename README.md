@@ -1,6 +1,7 @@
 # font_checker_app
 手書き文字が、特定のお手本フォントとどれだけ似ているかを判定するWebアプリケーション
-![image](https://github.com/user-attachments/assets/57de1a38-b875-444c-ae73-77f3fd95cd2b)
+![image](https://github.com/user-attachments/assets/43c1d436-1002-4a10-b612-a72e40795962)
+
 
 ## 概要
 
