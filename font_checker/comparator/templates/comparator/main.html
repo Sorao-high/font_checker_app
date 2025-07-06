@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>手書きフォント判定ゲーム</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .container { max-width: 600px; }
+        .result-card {
+            text-align: center;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .score {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h1 class="display-5">手書きフォント判定</h1>
+            <p class="lead">あなた自身の字と、お手本フォントとのそっくり度を判定します。</p>
+        </div>
+
+        <div class="card p-4">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ form.font_name.id_for_label }}" class="form-label">{{ form.font_name.label }}</label>
+                    {{ form.font_name }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.character.id_for_label }}" class="form-label">{{ form.character.label }}</label>
+                    {{ form.character }}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.image.id_for_label }}" class="form-label">{{ form.image.label }}</label>
+                    {{ form.image }}
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">判定する！</button>
+                </div>
+            </form>
+        </div>
+
+        {% if result %}
+            <div class="card result-card mt-5 p-4">
+                <div class="card-body">
+                    <h2 class="card-title">判定結果</h2>
+                    <p class="card-text fs-5">
+                        <strong>{{ result.font_name }}</strong> の <strong>「{{ result.character }}」</strong> との類似度は...
+                    </p>
+                    <p class="score">{{ result.score }}<span class="fs-4">%</span></p>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="alert alert-danger mt-4" role="alert">
+                <strong>エラー:</strong> {{ error }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
