@@ -26,6 +26,18 @@
 
 ## セットアップと実行方法
 
+### 環境変数の設定
+
+プロジェクトのルートディレクトリ（`manage.py`がある場所）に `.env` という名前のファイルを作成し、以下の内容を記述します。`SECRET_KEY`には任意のランダムな文字列を設定してください。
+
+```ini
+# .env
+SECRET_KEY='your-own-super-secret-key'
+DEBUG=True
+Bash
+これで、アプリケーションのドロップダウンリストに新しいフォントが追加され、判定に利用できるようになります。
+
+
 ### 1. リポジトリのクローン
 
 ```bash
@@ -100,13 +112,3 @@ Generated bash
 python manage.py import_features font_features.csv
 Use code with caution.
 
-### 2. 環境変数の設定
-
-プロジェクトのルートディレクトリ（`manage.py`がある場所）に `.env` という名前のファイルを作成し、以下の内容を記述します。`SECRET_KEY`には任意のランダムな文字列を設定してください。
-
-```ini
-# .env
-SECRET_KEY='your-own-super-secret-key'
-DEBUG=True
-Bash
-これで、アプリケーションのドロップダウンリストに新しいフォントが追加され、判定に利用できるようになります。
